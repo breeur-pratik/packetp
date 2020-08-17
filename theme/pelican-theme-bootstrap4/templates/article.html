@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4 mb-4 p-4 text-wrap" style="word-break: break-all;">
+    {% include "article_infos.html" %}
+    {{ article.content }}
+
+    {% include "disqus_script.html" %}
+
+    <hr>
+    
+    <ul class="d-flex  pl-0 ">
+
+        {% if article.prev_article %}
+        
+            <a href="{{ SITEURL }}/{{ article.prev_article.url}}" class="text-decoration-none w-50 pr-2 justify-content-start">
+             << {{ article.prev_article.title  }}
+            </a>
+        
+        {% endif %}
+        {% if article.next_article %}
+        
+            <a href="{{ SITEURL }}/{{ article.next_article.url}}" class="text-decoration-none w-50 pl-2 justify-content-end">
+             {{ article.next_article.title }} >>
+            </a>
+              
+            
+
+        {% endif %}
+       </ul>
+</div>
+
+{% endblock %}

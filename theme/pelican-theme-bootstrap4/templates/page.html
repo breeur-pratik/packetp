@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }}{% endblock %}
+{% block content %}
+
+<main class="page landing-page">
+    <section>
+        <div class=" container block-heading">
+            <h1 style="text-align: center; ">{{ page.title }}</h1>
+        </div>
+    </section>
+
+    <section class="clean-block clean-services pb-0 ">
+        <div class="container" style=" padding-top: 25px;">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    {{ page.content }}
+                </div> 
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

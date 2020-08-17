@@ -1,0 +1,51 @@
+<header>
+    
+    <button onclick="goBack()" class="btn btn-info px-3 py-2 mb-4">Back to Home</button>
+
+    <h1 class="text-break d-none d-md-block">
+        
+        {{ article.title }}
+    </h1>
+    <h1 class="h3 text-break d-md-none">
+        
+        {{ article.title }}
+    </h1>
+    
+    <div class="card border-0 card-body">
+        <p class="card-text text-wrap" style="word-break: break-all;">
+            {% if article.author %}
+                {% if article.author.url %}
+                    By: <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a><br />
+                {% else %}
+                    By: {{ article.author }}<br />
+                {% endif %}
+            {% endif %}
+            {% if article.date %}
+                Published: {{ article.date|strftime('%d %b %Y') }}<br />
+            {% endif %}
+            {% if article.modified %}
+                Modified: {{ article.modified|strftime('%d %b %Y') }}<br />
+            {% endif %}
+            {% if article.category %}
+                Category: <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a><br />
+            {% endif %}
+            {% if article.tags %}
+                Tags:
+                {% for tag in article.tags %}
+                    {% if tag != article.tags[-1] %} 
+                        <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>, 
+                    {% else %}
+                        <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a><br />
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </p>
+    </div>
+
+    <script>
+        function goBack() {
+        window.history.back();
+        }
+    </script>
+
+</header>
